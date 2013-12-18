@@ -1,6 +1,8 @@
 #[license = "MIT"];
-extern mod spoon;
+
+use spoon = lib;
 use spoon::create_issue;
+mod lib;
 
 #[test]
 fn test_create_issue() {
@@ -12,7 +14,7 @@ fn test_create_issue() {
     assert!(issue.description == ~"just a test issue");
 
     // Implicit static data
-    assert!(issue.assigned_to == None);
+    assert!(issue.assigned_to == ~None);
     assert!(issue.status == ~"Open");
 }
 
