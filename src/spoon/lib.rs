@@ -27,3 +27,13 @@ pub fn create_issue(name: ~str, label: ~str, description: ~str) -> ~Issue {
         created_at: 0
     }
 }
+
+pub fn print_issue_line(issue: &Issue) -> () {
+    println(format!("{} {} {} ({})", issue.status, issue.label, issue.name, issue.assigned_to.clone().unwrap_or(~"nobody")));
+}
+
+pub fn print_issue_list(issues: ~[Issue]) -> () {
+    for issue in issues.iter() {
+        print_issue_line(issue);
+    }
+}
