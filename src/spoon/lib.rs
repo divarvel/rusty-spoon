@@ -1,12 +1,13 @@
-#[desc = "File-based issue tracking"];
-#[license = "GPL"];
+#![desc = "File-based issue tracking"];
+#[license = "GPL"]
 
-extern mod extra;
 
-//use extra::uuid::Uuid;
+extern crate uuid;
+
+//use uuid::Uuid;
 
 pub struct Issue {
-    id: extra::uuid::Uuid,
+    id: uuid::Uuid,
     name: ~str,
     assigned_to: ~Option<~str>,
     label: ~str,
@@ -16,7 +17,7 @@ pub struct Issue {
 }
 
 pub fn create_issue(name: ~str, label: ~str, description: ~str) -> ~Issue {
-    let uuid = extra::uuid::Uuid::new_v4();
+    let uuid = uuid::Uuid::new_v4();
     ~Issue {
         id: uuid,
         name: name,

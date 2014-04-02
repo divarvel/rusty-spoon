@@ -1,4 +1,4 @@
-#[license = "MIT"];
+#![license = "MIT"]
 
 use spoon = lib;
 use spoon::create_issue;
