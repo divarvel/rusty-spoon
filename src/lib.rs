@@ -1,19 +1,18 @@
-#![desc = "File-based issue tracking"];
-#[license = "GPL"]
+#![desc = "File-based issue tracking"]
+#![license = "GPL"]
 
 
 extern crate uuid;
 
-//use uuid::Uuid;
 
 pub struct Issue {
-    id: uuid::Uuid,
-    name: ~str,
-    assigned_to: ~Option<~str>,
-    label: ~str,
-    status: ~str,
-    description: ~str,
-    created_at: uint
+    pub id: uuid::Uuid,
+    pub name: ~str,
+    pub assigned_to: ~Option<~str>,
+    pub label: ~str,
+    pub status: ~str,
+    pub description: ~str,
+    pub created_at: uint
 }
 
 pub fn create_issue(name: ~str, label: ~str, description: ~str) -> ~Issue {
@@ -30,7 +29,7 @@ pub fn create_issue(name: ~str, label: ~str, description: ~str) -> ~Issue {
 }
 
 pub fn print_issue_line(issue: &Issue) -> () {
-    println(format!("{} {} {} ({})", issue.status, issue.label, issue.name, issue.assigned_to.clone().unwrap_or(~"nobody")));
+    println!("{} {} {} ({})", issue.status, issue.label, issue.name, issue.assigned_to.clone().unwrap_or(~"nobody"));
 }
 
 pub fn print_issue_list(issues: ~[Issue]) -> () {

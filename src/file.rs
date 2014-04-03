@@ -8,7 +8,7 @@ pub fn write_to_file(i: &Issue) {
     let file = File::create(&Path::new(file_name));
 
     match file {
-        Some(mut f) => {
+        Ok(mut f) => {
             let date = i.created_at.to_str();
             let title_line = ~"# " + i.name + "\n\n";
 
@@ -42,8 +42,8 @@ pub fn write_to_file(i: &Issue) {
             f.write(title_line.as_bytes());
             f.write(i.description.as_bytes());
         }
-        None => {
-            println("file error");
+        Err(_) => {
+            println!("file error");
         }
     }
 }
